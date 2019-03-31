@@ -31,7 +31,8 @@ namespace Emby.Plugins.Gotify
             };
         }
 
-        public override Guid Id => Guid.Parse("e29621a5-fa9e-4330-982e-ef6e54c0cad2");
+        private readonly Guid _id = new Guid("e29621a5-fa9e-4330-982e-ef6e54c0cad2"); 
+        public override Guid Id => _id;
 
         public Stream GetThumbImage()
         {
