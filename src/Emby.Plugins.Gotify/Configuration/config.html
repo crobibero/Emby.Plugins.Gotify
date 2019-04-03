@@ -29,6 +29,12 @@
                         Token for your Gotify server
                     </div>
                 </div>
+                <div class="inputContainer">
+                    <input is="emby-input" type="number" id="txtGotifyPriority" required="required" label="Gotify Priority:" />
+                    <div class="fieldDescription">
+                        Token for your Gotify server
+                    </div>
+                </div>
                 <div>
                     <button is="emby-button" type="button" class="raised button-cancel block" id="testNotification">
                         <span>Test Notification</span>
@@ -64,6 +70,7 @@
                     $('#chkEnableGotify', page).checked(gotifyConfig.Enabled || false).checkboxradio("refresh");
                     $('#txtGotifyToken', page).val(gotifyConfig.Token || '');
                     $('#txtGotifyUrl', page).val(gotifyConfig.Url || '');
+                    $('#txtGotifyPriority', page).val(gotifyConfig.Priority || 0);
 
                     Dashboard.hideLoadingMsg();
                 });
@@ -156,6 +163,7 @@
                     gotifyConfig.Enabled = $('#chkEnableGotify', form).checked();
                     gotifyConfig.Token = $('#txtGotifyToken', form).val();
                     gotifyConfig.Url = $('#txtGotifyUrl', form).val();
+                    gotifyConfig.Priority = $('#txtGotifyPriority', form).val();
 
                     ApiClient.updatePluginConfiguration(pluginId, config).then(Dashboard.processPluginConfigurationUpdateResult);
                 });

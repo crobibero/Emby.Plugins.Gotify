@@ -19,12 +19,12 @@ namespace Emby.Plugins.Gotify.Api
     {
         private readonly IHttpClient _httpClient;
 
-        
+
         public ServerApiEndpoints(IHttpClient httpClient)
         {
             _httpClient = httpClient;
         }
-        
+
         private static GotifyOptions GetOptions(string userId)
         {
             return Plugin.Instance.Configuration.Options
@@ -39,9 +39,10 @@ namespace Emby.Plugins.Gotify.Api
             var body = new Dictionary<string, string>
             {
                 {"message", "This is a test notification from Emby"},
-                {"title", "Test Notification"}
+                {"title", "Test Notification"},
+                {"priority", options.Priority.ToString()}
             };
-
+            
             var requestOptions = new HttpRequestOptions
             {
                 Url = options.Url.TrimEnd('/') + $"/message?token={options.Token}"
@@ -51,7 +52,7 @@ namespace Emby.Plugins.Gotify.Api
 
             await _httpClient.Post(requestOptions).ConfigureAwait(false);
         }
-        
+
         public void Post(TestNotification request)
         {
             var task = PostAsync(request);

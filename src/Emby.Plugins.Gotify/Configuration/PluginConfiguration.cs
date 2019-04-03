@@ -18,5 +18,6 @@ namespace Emby.Plugins.Gotify.Configuration
         public string Url { get; set; }
         public string Token { get; set; }
         public string UserId { get; set; }
+        public int Priority { get; set; }
     }
 }
